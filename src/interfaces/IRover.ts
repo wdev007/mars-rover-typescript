@@ -1,8 +1,7 @@
-import { IPosition } from "./IPosition";
+import { MovementsType } from "../types/Movements";
 
 export interface IRover {
-  getPosition(): IPosition;
-  move(): void;
+  move(moviment: MovementsType): void;
   turnRigth(): void;
   turnLeft(): void;
 }
