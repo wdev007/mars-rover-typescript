@@ -1,43 +1,56 @@
-import fs from "fs";
+import readline from "readline";
+import { Plateau, Position, Rover } from "./entities";
+import { DirectionsType } from "./types";
 
-process.stdin.resume();
-process.stdin.setEncoding("utf-8");
+const lines: string[] = [];
 
-let inputString: any = "";
-let currentLine = 0;
-
-process.stdin.on("data", function (inputStdin) {
-  inputString += inputStdin;
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
 });
 
-process.stdin.on("end", function () {
-  inputString = inputString.split("\n");
+rl.prompt();
 
-  main();
+rl.on("line", (line) => {
+  if (line.trim()) {
+    lines.push(line);
+  }
 });
 
-function readLine() {
-  return inputString[currentLine++];
-}
+rl.on("close", () => {
+  const [plateauDimensionX, plateauDimensionY] = lines[0].split(" ");
 
-function main() {
-  const ws = fs.createWriteStream(process.env.OUTPUT_PATH || "");
+  const plateau = new Plateau(Number(plateauDimensionX), Number(plateauDimensionY));
 
-  const firstMultipleInput = readLine().replace(/\s+$/g, "").split(" ");
+  const rovers = lines
+    .slice(1)
+    .filter(Boolean)
 
-  console.log("firstMultipleInput", firstMultipleInput);
+    .map((line) => {
+      const [x, y, direction, command] = line.split(" ");
 
-  // const x1 = parseInt(firstMultipleInput[0], 10);
+      return {
+        x: Number(x),
+        y: Number(y),
+        direction: direction as DirectionsType,
+        command,
+      };
+    })
+    .map((payload) => {
+      const rover = new Rover(
+        plateau,
+        new Position(payload.x, payload.y),
+        payload.direction
+      );
+      rover.run(payload.command);
+      return rover;
+    })
+    .map((rover) => ({
+      position: rover.getPosition(),
+      direction: rover.getDirection(),
+    }));
 
-  // const v1 = parseInt(firstMultipleInput[1], 10);
+  console.log("rovers", rovers);
 
-  // const x2 = parseInt(firstMultipleInput[2], 10);
-
-  // const v2 = parseInt(firstMultipleInput[3], 10);
-
-  // const result = kangaroo(x1, v1, x2, v2);
-
-  // ws.write(result + '\n');
-
-  ws.end();
-}
+  process.exit(0);
+});

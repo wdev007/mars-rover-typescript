@@ -12,7 +12,7 @@ export class Rover implements IRover {
     private direcion: DirectionsType
   ) {}
 
-  run(commands: string): void {
+  public run(commands: string): void {
     commands.split("").forEach((command) => {
       if (Object.values(Movements).includes(command as any)) {
         this.move(command as Movements);
@@ -20,7 +20,15 @@ export class Rover implements IRover {
     });
   }
 
-  move(moviment: MovementsType): void {
+  public getPosition() {
+    return this.position;
+  }
+
+  public getDirection() {
+    return this.direcion;
+  }
+
+  private move(moviment: MovementsType): void {
     switch (moviment) {
       case Movements.LEFT: {
         this.turnLeft();
@@ -39,7 +47,7 @@ export class Rover implements IRover {
     }
   }
 
-  turnLeft(): void {
+  private turnLeft(): void {
     switch (this.direcion) {
       case Directions.EAST: {
         this.direcion = Directions.NORTH;
@@ -62,7 +70,7 @@ export class Rover implements IRover {
     }
   }
 
-  turnRigth(): void {
+  private turnRigth(): void {
     switch (this.direcion) {
       case Directions.EAST: {
         this.direcion = Directions.SOUTH;
@@ -85,7 +93,7 @@ export class Rover implements IRover {
     }
   }
 
-  advance(): void {
+  private advance(): void {
     const newPosition = this.position.moveForward(this.direcion);
 
     if (!newPosition.isOnPlateau(this.plateau)) {
@@ -93,13 +101,5 @@ export class Rover implements IRover {
     }
 
     this.position = newPosition;
-  }
-
-  getPosition() {
-    return this.position;
-  }
-
-  getDirection() {
-    return this.direcion;
   }
 }
