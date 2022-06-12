@@ -9,7 +9,7 @@ describe("Rover", () => {
     plateau = new Plateau(5, 5);
   });
 
-  it.only("should be able to run commands", () => {
+  it("should be able to run commands", () => {
     const position = new Position(1, 2);
 
     const rover = new Rover(plateau, position, "N");
@@ -20,7 +20,7 @@ describe("Rover", () => {
   });
 
   it("should be able to run commands", () => {
-    const position = new Position(1, 1);
+    const position = new Position(3, 3);
 
     const rover = new Rover(plateau, position, "E");
 

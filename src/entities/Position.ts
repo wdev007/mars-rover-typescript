@@ -5,10 +5,6 @@ import { DirectionsType } from "../types";
 export class Position {
   constructor(public x: number, public y: number) {}
 
-  public isEqual(other: Position): boolean {
-    return this.x == other.x && this.y == other.y;
-  }
-
   public isOnPlateau(plateau: Plateau): boolean {
     if (this.x < 0 || this.x > plateau.getDimensionX()) {
       return false;
