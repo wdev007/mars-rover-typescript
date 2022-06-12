@@ -1,4 +1,4 @@
-# Mars Rover Code Kata
+# Mars Rover
 
 ## The Problem
 
@@ -49,25 +49,13 @@ MMRMMRMRRM
 This has been created using gradle; to run the tests, just execute:
 
 ```
-./gradlew test
-```
-
-or (on windows machines):
-
-```
-gradlew.bat test
+npm run test
 ```
 
 ## Use the commandline app
 
-Package the app using:
+Build the app using:
 
 ```
-gradlew.bat build
-```
-
-And then execute the app from the subfolder `build\libs`:
-
-```
-java -jar mars-rover.jar
+npm run build
 ```
