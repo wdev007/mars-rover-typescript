@@ -32,7 +32,7 @@ export class Position {
         return new Position(this.x - 1, this.y);
       }
       default:
-        throw new Error("Should not get here!");
+        throw new Error("The direction is not valid!");
     }
   }
 }
