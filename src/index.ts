@@ -1,6 +1,7 @@
 import readline from "readline";
-import { Plateau, Position, Rover } from "./entities";
+
 import { DirectionsType } from "./types";
+import { Plateau, Position, Rover } from "./entities";
 
 const lines: string[] = [];
 
@@ -50,7 +51,10 @@ rl.on("close", () => {
       direction: rover.getDirection(),
     }));
 
-  console.log("rovers", rovers);
+  rovers
+    .map((rover) => `${rover.position.x} ${rover.position.y} ${rover.direction}`)
+    .filter(Boolean)
+    .map((line) => console.log(line));
 
   process.exit(0);
 });

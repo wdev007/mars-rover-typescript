@@ -1,10 +1,11 @@
 const assert = require("assert");
+
 const { Given, When, Then } = require("@cucumber/cucumber");
 
-let today: string;
-let actualAnswer: string;
+let today;
+let actualAnswer;
 
-function isItFriday(today: string) {
+function isItFriday(today) {
   return "Nope";
 }
 
@@ -16,6 +17,6 @@ When("I ask whether it's Friday yet", function () {
   actualAnswer = isItFriday(today);
 });
 
-Then("I should be told {string}", function (expectedAnswer: string) {
+Then("I should be told {string}", function (expectedAnswer) {
   assert.strictEqual(actualAnswer, expectedAnswer);
 });
