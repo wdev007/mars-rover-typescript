@@ -51,6 +51,8 @@ rl.on("close", () => {
       direction: rover.getDirection(),
     }));
 
+  console.log("\n ---- RESULTADO ---- \n");
+
   rovers
     .map((rover) => `${rover.position.x} ${rover.position.y} ${rover.direction}`)
     .filter(Boolean)
