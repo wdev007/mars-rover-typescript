@@ -35,7 +35,7 @@ export class Rover implements IRover {
         break;
       }
       case Movements.RIGHT: {
-        this.turnRigth();
+        this.turnRight();
         break;
       }
       case Movements.ADVANCE: {
@@ -70,7 +70,7 @@ export class Rover implements IRover {
     }
   }
 
-  private turnRigth(): void {
+  private turnRight(): void {
     switch (this.direcion) {
       case Directions.EAST: {
         this.direcion = Directions.SOUTH;
