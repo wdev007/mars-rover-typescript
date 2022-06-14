@@ -1,17 +1,22 @@
 Feature: Rover
   We need to know if the moves are working
   
-  Scenario: Direction east
-    Given Direction is east
-    When I go from east to the left
-    Then I should get direction 'N' (north)
+  Scenario: Direction east to left
+    Given Direction is 'E'
+    When I turn left
+    Then I should get direction 'N'
 
-  Scenario: Direction south
-    Given Direction is south
-    When I go from south to the left
-    Then I should get direction 'E' (east)
+  Scenario: Direction north to left
+    Given Direction is 'N'
+    When I turn left
+    Then I should get direction 'W'
+
+  Scenario: Direction south to left
+    Given Direction is 'S'
+    When I turn left
+    Then I should get direction 'E'
   
-  Scenario: Direction west
-    Given Direction is west
-    When I go from west to the left
-    Then I should get direction 'S' (south)
+  Scenario: Direction west to left
+    Given Direction is 'W'
+    When I turn left
+    Then I should get direction 'S'
