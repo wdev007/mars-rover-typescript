@@ -2,19 +2,20 @@ import assert from "assert";
 import { Given, When, Then } from "@cucumber/cucumber";
 
 import { Position } from "../../../src/entities";
-import { Directions } from "../../../src/enums";
+import { DirectionsType } from "../../../src/types";
 
 let position: Position;
-let y: number;
+const coordinates = { x: 0, y: 0 };
 
-Given("I start with x = 1 and y = 1", () => {
-  position = new Position(1, 1);
+Given("I start with \\({string},{string})", (x: string, y: string) => {
+  position = new Position(Number(x), Number(y));
 });
 
-When("I move forward to NORTH", () => {
-  y = position.moveForward(Directions.NORTH).y;
+When("I move forward to {string}", (direction: DirectionsType) => {
+  coordinates.y = position.moveForward(direction).y;
+  coordinates.x = position.moveForward(direction).x;
 });
 
-Then("I end up with y = {int}", (expectedAnswer: number) => {
-  assert.strictEqual(y, expectedAnswer);
+Then("I end up with {string} = {int}", (axis: "x" | "y", coordinate: number) => {
+  assert.strictEqual(coordinates[axis], coordinate);
 });
