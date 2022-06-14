@@ -46,16 +46,57 @@ MMRMMRMRRM
 
 ## The Solution
 
-This has been created using gradle; to run the tests, just execute:
+### This has been created using Typecript
+
+## To install the dependencies, just execute:
 
 ```
-npm run test
+npm install
+```
+
+## To run the unit tests, just execute:
+
+```
+npm run test:unit
+```
+
+## To run the BDD tests, just execute:
+
+```
+npm run test:cucumber
 ```
 
 ## Use the commandline app
 
-Build the app using:
+```
+npm run start
+```
 
-```
-npm run build
-```
+<br/>
+
+## In the first line of the input is the dimensions of the Plateau, and in the subsequent lines the data of the rovers
+
+<br/>
+
+![Step 01](docs/images/step_01.png)
+
+<br/>
+<br/>
+
+## After last rover data press enter
+
+<br/>
+
+![Step 01](docs/images/step_02.png)
+
+<br/>
+<br/>
+
+## And finally CTRL + C to show the result
+
+<br/>
+
+![Step 01](docs/images/step_03.png)
+
+<br/>
+<br/>
