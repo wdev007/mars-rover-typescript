@@ -19,6 +19,7 @@ rl.on("line", (line) => {
 });
 
 rl.on("close", () => {
+  console.log("\n ---- ENTRADA ---- \n");
   const [plateauDimensionX, plateauDimensionY] = lines[0].split(" ");
 
   const plateau = new Plateau(Number(plateauDimensionX), Number(plateauDimensionY));
@@ -26,7 +27,6 @@ rl.on("close", () => {
   const rovers = lines
     .slice(1)
     .filter(Boolean)
-
     .map((line) => {
       const [x, y, direction, command] = line.split(" ");
 
